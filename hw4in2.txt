@@ -1,0 +1,55 @@
+UpdateMinimumAcceptablePrice 0800 500
+EnterBid 0805 Alice 300 1
+EnterBid 0810 Bob 350 1
+EnterBid 0815 Charlie 400 1
+DisplayHighestBid 0820
+SellOneItem 0825
+EnterBid 0830 David 450 1
+EnterBid 0835 Eve 480 1
+EnterBid 0840 Frank 490 1
+DisplayHighestBid 0845
+SellOneItem 0850
+UpdateMinimumAcceptablePrice 0855 400
+SellOneItem 0900
+EnterBid 0905 Grace 410 1
+EnterBid 0910 Hank 430 1
+EnterBid 0915 Ivy 420 1
+EnterBid 0920 Jack 480 1
+EnterBid 0925 Kelly 510 1
+DisplayHighestBid 0930
+SellOneItem 0935
+EnterBid 0940 Liam 450 1
+EnterBid 0945 Mia 470 1
+EnterBid 0950 Noah 490 1
+EnterBid 0955 Olivia 520 2
+EnterBid 1000 Paul 460 1
+EnterBid 1005 Quinn 505 2
+EnterBid 1010 Rachel 495 3
+EnterBid 1015 Sam 530 1
+UpdateMinimumAcceptablePrice 1016 200
+DisplayHighestBid 1020
+SellOneItem 1025
+SellOneItem 1030
+SellOneItem 1032
+SellOneItem 1035
+SellOneItem 1038
+SellOneItem 1040
+SellOneItem 1042
+SellOneItem 1044
+SellOneItem 1045
+SellOneItem 1050
+SellOneItem 1055
+SellOneItem 1100
+SellOneItem 1105
+DisplayHighestBid 1110
+SellOneItem 1115
+SellOneItem 1120
+SellOneItem 1125
+SellOneItem 1130
+SellOneItem 1135
+SellOneItem 1140
+SellOneItem 1150
+SellOneItem 1155
+SellOneItem 1200
+DisplayHighestBid 1205
+SellOneItem 1210

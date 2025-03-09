@@ -1,0 +1,20 @@
+EnterBid 1200 John 120 4
+EnterBid 1205 Alex 100 5
+EnterBid 1207 Michael 130 2
+EnterBid 1225 David 130 10
+DisplayHighestBid 1230 Michael 1207 130 2
+EnterBid 1237 Chris 90 15
+EnterBid 1242 Sarah 150 7
+EnterBid 1318 Emma 170 8
+DisplayHighestBid 1320 Emma 1318 170 8
+EnterBid 1324 Olivia 125 3
+EnterBid 1347 Sophia 170 5
+DisplayHighestBid 1350 Emma 1318 170 8
+EnterBid 1352 Mia 165 6
+EnterBid 1444 Jordan 115 20
+EnterBid 1532 Casey 125 12
+EnterBid 1540 Riley 220 4
+DisplayHighestBid 1542 Riley 1540 220 4
+EnterBid 1544 Taylor 190 9
+EnterBid 1620 Jamie 205 2
+DisplayHighestBid 1625 Riley 1540 220 4
