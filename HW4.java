@@ -1,3 +1,19 @@
+/**
+ * Author: Ipule Pipi
+Email: ipipi2022@my.fit.edu
+Course: CSE2010-Algorithms and Data Structures
+Due Date: 13th March 2025
+Section: E1
+ * HW4 - Auction Using Priority Queue  
+ * This program uses priority queue to create a auction
+ * This priority queue is implemented using a max heap data structure
+ * When user makes a bid , the bid is inserted into the priority queue and take O(log n) due to swapping in each layer
+ * When seller sells the item to bidders, the bid is removed from priority queue and also takes O(log n) time
+ * Accessing the highest bid takes O(1) time complexity since it is already sorted in heap
+ * The bid is inserted back into the queue if quantity of item is not met, meaning not zero
+ */
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
