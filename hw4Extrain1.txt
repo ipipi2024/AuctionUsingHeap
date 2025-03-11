@@ -1,0 +1,29 @@
+EnterBid 0900 Alice 300 2
+EnterBid 0905 Bob 350 3
+EnterBid 0910 Charlie 320 4
+DisplayHighestBid 0915
+UpdateBid 0920 Bob 380 5
+DisplayHighestBid 0925
+UpdateBid 0930 Alice 400 3
+DisplayHighestBid 0935
+EnterBid 0940 David 370 2
+UpdateMinimumAcceptablePrice 0945 340
+SellOneItem 0950
+UpdateBid 0955 Charlie 410 2
+DisplayHighestBid 1000
+SellOneItem 1005
+SellOneItem 1010
+UpdateBid 1015 Eve 430 1
+DisplayHighestBid 1020
+UpdateBid 1025 David 420 3
+DisplayHighestBid 1030
+SellOneItem 1035
+SellOneItem 1040
+SellOneItem 1045
+UpdateBid 1050 Bob 300 1
+DisplayHighestBid 1055
+SellOneItem 1100
+UpdateBid 1105 Frank 290 2
+DisplayHighestBid 1110
+SellOneItem 1115
+DisplayHighestBid 1120

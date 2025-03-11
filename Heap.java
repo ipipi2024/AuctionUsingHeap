@@ -4,7 +4,6 @@ public class Heap {
 
     //hashmap to access bid by using character as key
     //this hash map stores references or pointers of at most 100 DoublyLinkedList which contains the bids
-    //singly linked is used becuase, if the hashname produces the integer key, they can be chainned to avoid collusion
     HashMap map = new HashMap(100);
 
     public static class Bid {
@@ -35,25 +34,49 @@ public class Heap {
 
     // method to add bid to heap
     public void insert(Bid bid) {
+        // Check if the bidder already exists
+        Integer existingIndex = map.getKey(bid.name);
+        if (existingIndex != null) {
+            // If bidder exists, treat this as an update
+            Bid existingBid = heap[existingIndex];
+            double oldPrice = existingBid.price;
+            int oldTime = existingBid.time;
+            
+            // Update existing bid values including time
+            existingBid.price = bid.price;
+            existingBid.quantity = bid.quantity;
+            existingBid.time = bid.time;
+            
+            // Reheapify as needed based on price and time changes
+            if (bid.price > oldPrice) {
+                swapUp(existingIndex);
+            } else if (bid.price < oldPrice) {
+                swapDown(existingIndex);
+            } else if (bid.time < oldTime) {
+                // If price is same but time is earlier, may need to move up
+                swapUp(existingIndex);
+            } else if (bid.time > oldTime) {
+                // If price is same but time is later, may need to move down
+                swapDown(existingIndex);
+            }
+            return;
+        }
+        
         // check if its not full
         if (numberOfBids == heap.length) {
             System.out.println("Maximum Bid capacity is reached, please wait and try again");
             return;
         }
+        
+        // Add new bid
         heap[numberOfBids] = bid;
         //insert the bid into hash map
-       map.addEntry(numberOfBids, heap[numberOfBids].name);
+        map.addEntry(numberOfBids, heap[numberOfBids].name);
         swapUp(numberOfBids);
         numberOfBids++;
-
-        // Fix max hip property by swapping
-
     }
 
     public void swapUp(int index) {
-
-       
-
         // check if reached the root
         if (index == 0) {
             return;
@@ -87,8 +110,12 @@ public class Heap {
             numberOfBids--;
             return max;
         }
+        
         // replace root with the last element or bid
         heap[0] = heap[numberOfBids - 1];
+        
+        // Update the mapping for the moved bid
+        map.addEntry(0, heap[0].name);
 
         // clear last element
         heap[numberOfBids - 1] = null;
@@ -100,10 +127,9 @@ public class Heap {
         swapDown(0);
 
         return max;
-
     }
 
-    // method to swap down down
+    // method to swap down
     public void swapDown(int index) {
         int largest = index;
         int leftChildIndex = 2 * index + 1;
@@ -132,6 +158,7 @@ public class Heap {
 
         // If largest is not the current index, swap and continue down
         if (largest != index) {
+            map.updateKey(index, largest, heap[index].name, heap[largest].name);
             swap(index, largest);
             swapDown(largest);
         }
@@ -153,6 +180,14 @@ public class Heap {
         Bid temp = heap[j];
         heap[j] = heap[i];
         heap[i] = temp;
-
+    }
+    
+    /**
+     * Method to find index of a bid by customer name
+     * Returns -1 if not found
+     */
+    public int findBidIndex(String name) {
+        Integer index = map.getKey(name);
+        return index != null ? index : -1;
     }
 }
