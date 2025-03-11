@@ -98,35 +98,39 @@ public class HW4 {
     private static void handleSellOneItem(String[] parts) {
         // Format: SellOneItem time
         String timeStr = parts[1];
-
+    
         if (bidHeap.isEmpty()) {
             // No bids available
             System.out.println("SellOneItem " + timeStr + " NoBids");
             return;
         }
-
-        // Get highest bid
+    
+        // Get highest bid without removing it
         Heap.Bid highestBid = bidHeap.getMax();
-
+    
         if (highestBid.price < minimumAcceptablePrice) {
             // Highest bidding price is too low
             System.out.println("SellOneItem " + timeStr + " HighestBiddingPriceIsTooLow");
             return;
         }
-
-        // Process the sale
-        Heap.Bid soldBid = bidHeap.removeMax();
-
-        // Decrement quantity
-        soldBid.quantity--;
-
-        // If quantity is still > 0, reinsert the bid
-        if (soldBid.quantity > 0) {
-            bidHeap.insert(soldBid);
+    
+        // Store bid information for output
+        String bidderName = highestBid.name;
+        double bidPrice = highestBid.price;
+    
+        // If this is the last item from this bid, remove it
+        if (highestBid.quantity == 1) {
+            bidHeap.removeMax();
+            //also remove the entry in hashmap
+            bidHeap.map.removeEntry(bidderName);
+        } else {
+            // Otherwise, just decrement the quantity in place
+            highestBid.quantity--;
+            // No need to reheapify since price and timestamp (the priority keys) remain unchanged
         }
-
+    
         // Output the sale information
-        System.out.println("SellOneItem " + timeStr + " " + soldBid.name + " " + soldBid.price);
+        System.out.println("SellOneItem " + timeStr + " " + bidderName + " " + bidPrice);
     }
 
     private static void handleDisplayHighestBid(String[] parts) {

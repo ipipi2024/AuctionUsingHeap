@@ -2,6 +2,11 @@ public class Heap {
     Bid[] heap = new Bid[100];
     int numberOfBids = 0;
 
+    //hashmap to access bid by using character as key
+    //this hash map stores references or pointers of at most 100 DoublyLinkedList which contains the bids
+    //singly linked is used becuase, if the hashname produces the integer key, they can be chainned to avoid collusion
+    HashMap map = new HashMap(100);
+
     public static class Bid {
         String name;
         double price;
@@ -35,8 +40,9 @@ public class Heap {
             System.out.println("Maximum Bid capacity is reached, please wait and try again");
             return;
         }
-
         heap[numberOfBids] = bid;
+        //insert the bid into hash map
+       map.addEntry(numberOfBids, heap[numberOfBids].name);
         swapUp(numberOfBids);
         numberOfBids++;
 
@@ -45,6 +51,9 @@ public class Heap {
     }
 
     public void swapUp(int index) {
+
+       
+
         // check if reached the root
         if (index == 0) {
             return;
@@ -52,10 +61,13 @@ public class Heap {
 
         int parentIndex = (index - 1) / 2;
         if (heap[parentIndex].price < heap[index].price) {
+            //update key which stores the index to bid
+            map.updateKey(parentIndex, index, heap[parentIndex].name, heap[index].name);
             swap(parentIndex, index);
             swapUp(parentIndex);
         } else if (heap[parentIndex].price == heap[index].price &&
                 heap[parentIndex].time > heap[index].time) {
+            map.updateKey(parentIndex, index, heap[parentIndex].name, heap[index].name);
             swap(parentIndex, index);
             swapUp(parentIndex);
         }
